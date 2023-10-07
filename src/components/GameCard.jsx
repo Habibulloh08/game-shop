@@ -10,6 +10,7 @@ const GameCard = ({ game }) => {
     library,
     handleAddToBag,
     handleRemoveFromBag,
+    bag,
   } = useGlobalContext();
 
   const handleLikeClick = (e) => {
@@ -20,7 +21,7 @@ const GameCard = ({ game }) => {
 
   const handlebagLocal = (e) => {
     e.preventDefault();
-    const isGameInBag = library.some((item) => item._id === game._id);
+    const isGameInBag = bag.some((item) => item._id === game._id);
     !isGameInBag ? handleAddToBag(game) : handleRemoveFromBag(game);
   };
 
