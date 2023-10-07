@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useGlobalContext } from "./Contex";
 import Header from "./pages/Header";
-
 import { useRef, useState } from "react";
 import Home from "./pages/Home";
 import Bag from "./pages/Bag";
@@ -38,9 +37,18 @@ function App() {
   };
 
   return (
-    <>
+    <div className="blog">
       <main>
         <SideMenu active={active} sectionActive={handleSectionActive} />
+
+        {/* <div className="baner">
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/library" element={<MyLibrary />} />
+              <Route path="/bag" element={<Bag />} />
+            </Routes> 
+            </div> */}
         <div className={`banner ${active ? "active" : ""}`}>
           <Header toggleActive={handleToggleActive} />
           <div className="container-fluid">
@@ -52,17 +60,11 @@ function App() {
                 <MyLibrary reference={libraryRef} />
               </>
             )}
-
-            {/* <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/library" element={<MyLibrary />} />
-              <Route path="/bag" element={<Bag />} />
-            </Routes> */}
           </div>
         </div>
       </main>
-    </>
+
+    </div>
   );
 }
 

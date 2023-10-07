@@ -21,7 +21,7 @@ main {
 
 .banner {
   position: relative;
-  width: 81%;
+  width: 79%;
   height: 100%;
   border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -29,6 +29,7 @@ main {
   box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.35);
   transition: 1s;
+  overflow-x: hidden;
 }
 
 .banner.active {

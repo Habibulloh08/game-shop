@@ -1,4 +1,4 @@
-[
+export const data =[
   {
     "_id": 1,
     "title": "League of Legends",
@@ -117,5 +117,5 @@
     "img": "./img/games/diablo-3-bg.jpeg",
     "trailer": "https://www.youtube.com/embed/M2TpNQhfkp4",
     "active": false
-  }
+  },
 ]

@@ -1,8 +1,8 @@
 import "../staylCss/header.css";
 import User from "../assets/user.jpg";
-// import { useGlobalContext } from "../Contex";
-const Header = ({toggleActive}) => {
-  // const { handleToggleActive } = useGlobalContext();
+import { useGlobalContext } from "../Contex";
+const Header = ({ toggleActive }) => {
+  const { library, bag } = useGlobalContext();
   return (
     <header>
       <a href="#" className="menu" onClick={toggleActive}>
@@ -11,11 +11,11 @@ const Header = ({toggleActive}) => {
       <div className="userItems">
         <a href="#" className="icon">
           <i className="bi bi-heart-fill"></i>
-          <span className="like">0</span>
+          <span className="like">{library.length}</span>
         </a>
         <a href="#" className="icon">
           <i className="bi bi-bag-fill"></i>
-          <span className="bag">0</span>
+          <span className="bag">{bag.length}</span>
         </a>
         <div className="avatar">
           <a href="#">

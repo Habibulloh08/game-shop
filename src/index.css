@@ -16,11 +16,16 @@ h4,
 p {
   color: #ffffff;
 }
-body {
+/* body {
   position: relative;
   background: var(--bgColor);
   font-family: "Roboto", sans-serif;
   width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
+  overflow: visible;
+} */
+
+.blog {
+  max-width: 100px;
+  width: 100%;
+  margin: 0 auto;
 }

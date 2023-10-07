@@ -2,6 +2,7 @@ import { useGlobalContext } from "../Contex";
 import GameCard from "../components/GameCard";
 import GameSwiper from "../components/GameSwiper";
 import "../staylCss/home.css";
+
 const Home = ({ reference }) => {
   const { games } = useGlobalContext();
   if (!games || !games.length) {
@@ -19,7 +20,7 @@ const Home = ({ reference }) => {
             <h2 className="sectionTitle">Games on promation</h2>
           </div>
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
+            <a href="" className="viewMore">
               View More Games <i className="bi bi-arrow-right"></i>
             </a>
           </div>

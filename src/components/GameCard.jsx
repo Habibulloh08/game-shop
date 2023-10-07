@@ -1,17 +1,27 @@
-// GameCard.jsx
 import React from "react";
 import { useGlobalContext } from "../Contex";
 import "../staylCss/gameCard.css";
 import GameRating from "./GameRating";
 
 const GameCard = ({ game }) => {
-  const { handleAddToLibrary, handleRemoveFromLibrary, library } =
-    useGlobalContext();
+  const {
+    handleAddToLibrary,
+    handleRemoveFromLibrary,
+    library,
+    handleAddToBag,
+    handleRemoveFromBag,
+  } = useGlobalContext();
 
   const handleLikeClick = (e) => {
     e.preventDefault();
     const isGameInLibrary = library.some((item) => item._id === game._id);
     isGameInLibrary ? handleRemoveFromLibrary(game) : handleAddToLibrary(game);
+  };
+
+  const handlebagLocal = (e) => {
+    e.preventDefault();
+    const isGameInBag = library.some((item) => item._id === game._id);
+    !isGameInBag ? handleAddToBag(game) : handleRemoveFromBag(game);
   };
 
   return (
@@ -45,7 +55,7 @@ const GameCard = ({ game }) => {
             ${(1 - game.discount) * game.price.toFixed(2)}
           </span>
         </div>
-        <a href="#" className="addBag">
+        <a href="#" className="addBag" onClick={handlebagLocal}>
           <i className="bi bi-bag-plus"></i>
         </a>
       </div>

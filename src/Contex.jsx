@@ -1,12 +1,27 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { data } from "./data/api/gamesData";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [games, setGames] = useState([]);
-  
+  const [games, setGames] = useState(data);
+
   const [active, setActive] = useState(false);
   const [library, setLibrary] = useState([]);
+  const [bag, setBag] = useState([]);
+
+  useEffect(() => {
+    const savedLibrary = JSON.parse(localStorage.getItem("library")) || [];
+    const savedBag = JSON.parse(localStorage.getItem("bag")) || [];
+
+    setLibrary(savedLibrary);
+    setBag(savedBag);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("library", JSON.stringify(library));
+    localStorage.setItem("bag", JSON.stringify(bag));
+  }, [library, bag]);
 
   const handleAddToLibrary = (game) => {
     if (!library.some((item) => item._id === game._id)) {
@@ -19,32 +34,32 @@ const AppProvider = ({ children }) => {
     setLibrary(updatedLibrary);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:5173/api/gamesData.json"
-        );
-        const data = await response.json();
-        setGames(data);
-      } catch (error) {
-        console.error("Ma'lumotlarni olishda xato yuz berdi: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const savedLibrary = JSON.parse(localStorage.getItem("library"));
-    if (savedLibrary) {
-      setLibrary(savedLibrary);
+  const handleAddToBag = (game) => {
+    const isGameInBag = bag.some((item) => item._id === game._id);
+    if (!isGameInBag) {
+      setBag([...bag, game]);
     }
-  }, []);
+  };
 
-  useEffect(() => {
-    localStorage.setItem("library", JSON.stringify(library));
-  }, [library]);
+  const handleRemoveFromBag = (game) => {
+    const updatedBag = bag.filter((item) => item._id !== game._id);
+    setBag(updatedBag);
+  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "http://localhost:5173/api/gamesData.json"
+  //       );
+  //       const data = await response.json();
+  //       setGames(data);
+  //     } catch (error) {
+  //       console.error("Ma'lumotlarni olishda xato yuz berdi: ", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <AppContext.Provider
@@ -54,8 +69,11 @@ const AppProvider = ({ children }) => {
         active,
         setActive,
         library,
+        bag,
         handleAddToLibrary,
         handleRemoveFromLibrary,
+        handleAddToBag,
+        handleRemoveFromBag,
       }}
     >
       {children}
