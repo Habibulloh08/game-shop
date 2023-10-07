@@ -28,20 +28,25 @@ const SideMenu = ({ active, sectionActive }) => {
       </ul>
       <ul className="social">
         <li>
-          <a href="#">
-            <i className="bi bi-meta"></i>
+          <a href="https://instagram.com/karimov_khabibulloh?igshid=OGQ5ZDc2ODk2ZA==">
+            <i class="bi bi-instagram"></i>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i className="bi bi-twitter-x"></i>
+          <a href="https://github.com/Habibulloh08">
+            <i class="bi bi-github"></i>
           </a>
         </li>
         <li>
+          <a href="https://t.me/habibulloh90">
+            <i className="bi bi-telegram"></i>
+          </a>
+        </li>
+        {/* <li>
           <a href="#">
             <i className="bi bi-youtube"></i>
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="#" className="share">
             <i className="bi bi-share"></i>
